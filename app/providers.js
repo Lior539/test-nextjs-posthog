@@ -5,16 +5,18 @@ import { PostHogProvider } from 'posthog-js/react'
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
+if (typeof window !== 'undefined') {
+  posthog.init("phc_Is2364QKW0QKHbXWVtgh8Yugx8xAvdfL71JmBaKD8mG", {
+    api_host: "https://app.posthog.com"
+  })
+}
+
 export function PostHogPageview() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   // Track pageviews
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      posthog.init("phc_Is2364QKW0QKHbXWVtgh8Yugx8xAvdfL71JmBaKD8mG", {
-        api_host: "https://app.posthog.com"
-      })
-    }
+
 
     if (pathname) {
       let url = window.origin + pathname
