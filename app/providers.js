@@ -10,14 +10,11 @@ if (typeof window !== 'undefined') {
     api_host: "https://app.posthog.com"
   })
 }
-
 export function PostHogPageview() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   // Track pageviews
   useEffect(() => {
-
-
     if (pathname) {
       let url = window.origin + pathname
       if (searchParams.toString()) {
